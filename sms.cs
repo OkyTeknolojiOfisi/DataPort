@@ -12,7 +12,7 @@ namespace DataPort
     /// <summary>
     /// DataPort API'ı ile sms göndermeye yarayan sınıftır.
     /// </summary>
-    class sms
+    public class sms
     {
         #region Tanımlamalar
         private static string _UserName;
@@ -29,6 +29,10 @@ namespace DataPort
             public int Isunicode;
             public string SendDate;
             public string DeleteDate;
+            public MesajListesi MessageList = new MesajListesi();
+        }
+        private class MesajListesi
+        {
             public List<Values> GSMList = new List<Values>();
             public List<Values> ContentList = new List<Values>();
         }
@@ -138,11 +142,11 @@ namespace DataPort
         {
             if (!yardimci.TelefonFormat(GSM)) { throw new Exception("Telefon formatı uygun değil."); }
 
-            _SMSGonderiPaketi.GSMList.Add(new Values { Value = GSM });
+            _SMSGonderiPaketi.MessageList.GSMList.Add(new Values { Value = GSM });
 
             if (metin != null)
             {
-                _SMSGonderiPaketi.ContentList.Add(new Values { Value = metin });
+                _SMSGonderiPaketi.MessageList.ContentList.Add(new Values { Value = metin });
             }
 
             return true;
