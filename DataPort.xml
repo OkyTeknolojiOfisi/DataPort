@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataPort</name>
+    </assembly>
+    <members>
+        <member name="T:DataPort.iys">
+            <summary>
+            İleti Yönetim Sistemi'ne DataPort API'ı üzerinden veri kaydetmek için oluşturulmuş sınıftır.
+            </summary>
+        </member>
+        <member name="T:DataPort.iys.SourceTypes">
+            <summary>
+            İzin kaynağı seçenekleri
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.red">
+            <summary>
+            İzin durumu, hizmet sağlayıcının kendi isteğiyle RET olarak belirlenmiştir.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.fiziksel">
+            <summary>
+            İzin, hizmet sağlayıcı tarafından fiziksel ortamda alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.islak_imza">
+            <summary>
+            İzin, alıcının bir formu veya anketi imzalaması üzerine alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.etkinlik">
+            <summary>
+            İzin, hizmet sağlayıcının düzenlediği bir etkinlikte alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.atm">
+            <summary>
+            İzin, hizmet sağlayıcıya ait yerleşik ATM cihazıyla alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.elektronik_ortam">
+            <summary>
+            İzin, hizmet sağlayıcıya ait bir elektronik ortamda alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.web">
+            <summary>
+            İzin, hizmet sağlayıcının web sitesi üzerinde yapılan bir işlemle alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.mobil">
+            <summary>
+            İzin, hizmet sağlayıcıya ait mobil uygulama üzerinden alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.mesaj">
+            <summary>
+            İzin, hizmet sağlayıcıya ait kısa mesaj numarası üzerinden alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.eposta">
+            <summary>
+            İzin, hizmet sağlayıcıya ait e-posta vasıtasıyla alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.cagri_merkezi">
+            <summary>
+            İzin, hizmet sağlayıcıya bağlı bir çağrı merkezinde sesle veya numara tuşlamayla alınmıştır.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.SourceTypes.sosyal_medya">
+            <summary>
+            İzin, hizmet sağlayıcıya ait sosyal medya aracı üzerinden alınmıştır.
+            </summary>
+        </member>
+        <member name="T:DataPort.iys.RecipientTypes">
+            <summary>
+            Alıcı seçenekleri
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.RecipientTypes.tacir">
+            <summary>
+            Tacir veya esnaf kayıtlarında kullanılacak. Örneğin B2B sistemine üye bayiler.
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.RecipientTypes.bireysel">
+            <summary>
+            Bireysel kayıtlarda kullanılacak. Son kullanıcı da denilebilir.
+            </summary>
+        </member>
+        <member name="T:DataPort.iys.ContentTypes">
+            <summary>
+            ONAY / RET bilgisi
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.ContentTypes.optin">
+            <summary>
+            ONAY
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.ContentTypes.optout">
+            <summary>
+            RET
+            </summary>
+        </member>
+        <member name="T:DataPort.iys.PermissionTypes">
+            <summary>
+            İzin seçenekleri
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.PermissionTypes.arama">
+            <summary>
+            Arama izni
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.PermissionTypes.mesaj">
+            <summary>
+            Mesaj gönderme izni
+            </summary>
+        </member>
+        <member name="F:DataPort.iys.PermissionTypes.eposta">
+            <summary>
+            E-posta gönderme izni (Bu seçenek mevcut fakat DataPort API'si e-posta kabul etmiyor.
+            </summary>
+        </member>
+        <member name="T:DataPort.iys.KayitIstekSonuc">
+            <summary>
+            Kayıt isteğine API'ın verdiği cevapları tutan sınıf. KayitGonder fonksiyonunun geri dönüşü bu sınıfın listesi şeklindedir.
+            </summary>
+        </member>
+        <member name="P:DataPort.iys.KayitIstekSonuc.GSM">
+            <summary>
+            Kayıt için gönderilen cep telefonu numarası
+            </summary>
+        </member>
+        <member name="P:DataPort.iys.KayitIstekSonuc.PermissionType">
+            <summary>
+            Kaydı talep edilen izin türü
+            </summary>
+        </member>
+        <member name="P:DataPort.iys.KayitIstekSonuc.MessageID">
+            <summary>
+            DataPort API'ından dönen işlem takip kodu
+            </summary>
+        </member>
+        <member name="P:DataPort.iys.KayitIstekSonuc.Status">
+            <summary>
+            İşlem durumu, 0 başarılı şekilde ulaştığını gösteriyor
+            </summary>
+        </member>
+        <member name="M:DataPort.iys.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Sınıf oluşturucu.
+            </summary>
+            <param name="UserName">DataPort kullanıcı adı</param>
+            <param name="Password">DataPort şifresi</param>
+            <param name="BrandName">IYS sistemine kayıt işlemi yapılacaksa girilmesi gereklidir.</param>
+            <param name="RecipientType">Sisteme kaydedilecek alıcıların türleri, RecipientTypes numaralandırmasından seçenekler alınabilir.</param>
+        </member>
+        <member name="M:DataPort.iys.AliciEkle(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Eklenecek olan alıcıları eklemeye yarayan fonksiyon.
+            </summary>
+            <param name="GSM">Telefon numarası</param>
+            <param name="Source">İletişim bilgisinin kaynağı, SourceTypes numaralandırmasından seçenekler alınabilir.</param>
+            <param name="ConsentDate">İletişim izninin alındığı tarih, "YYYY-MM-DD HH:mm:ss" formatında olmalı. Null gönderilmesi durumunda anlık tarih gönderilir.</param>
+            <param name="PermissionType">Alınan iznin türü, belirtilmemesi halinde "mesaj" izni kaydedilir. Diğer seçenekler PermissionTypes numaralandırmasından alınabilir.</param>
+            <param name="Content">İzin durumu, belirtilmemesi halinde "onay" izni kaydedilir.</param>
+            <returns>Gönderim paketine eklenen veride True döner. Hatalı bir parametrede hata verir. Try Catch içerisinde kullanılması tavsiye edilir.</returns>
+        </member>
+        <member name="M:DataPort.iys.Oturum">
+            <summary>
+            DataPort API'sine sınıf oluştururken verilen parametrelerle oturum isteği gönderir.
+            </summary>
+            <returns>DataPort API'si tarafından oluşturulan Bearer Token döndürür.</returns>
+        </member>
+        <member name="M:DataPort.iys.KayitGonder">
+            <summary>
+            Pakete eklenen kayıtları DataPort İYS sistemine gönderir.
+            </summary>
+            <returns>Kayıt isteğinde bulunulan telefon numaraları, istenen izin türü, DataPort kayıt işlemine ait benzersiz MessageId ve durumu belirtir Status döndürür.</returns>
+        </member>
+        <member name="T:DataPort.sms">
+            <summary>
+            DataPort API'ı ile sms göndermeye yarayan sınıftır.
+            </summary>
+        </member>
+        <member name="T:DataPort.sms.OperatorTypes">
+            <summary>
+            Gönderimde kullanılacak operatör değerleri
+            </summary>
+        </member>
+        <member name="F:DataPort.sms.OperatorTypes.Turkcell">
+            <summary>
+            Turkcell
+            </summary>
+        </member>
+        <member name="F:DataPort.sms.OperatorTypes.Avea">
+            <summary>
+            Avea
+            </summary>
+        </member>
+        <member name="F:DataPort.sms.OperatorTypes.Vodafone">
+            <summary>
+            Vodafone
+            </summary>
+        </member>
+        <member name="F:DataPort.sms.OperatorTypes.Superonline">
+            <summary>
+            Superonline
+            </summary>
+        </member>
+        <member name="T:DataPort.sms.UnicodeTypes">
+            <summary>
+            Gönderilecek olan SMS'lerin karakter kodlamasını seçebileceğiniz sınıf
+            </summary>
+        </member>
+        <member name="F:DataPort.sms.UnicodeTypes.ingilizce">
+            <summary>
+            Türkçe karakter içermeyen metinler için
+            </summary>
+        </member>
+        <member name="F:DataPort.sms.UnicodeTypes.turkce">
+            <summary>
+            Türkçe karakter içeren metinler için
+            </summary>
+        </member>
+        <member name="M:DataPort.sms.#ctor(System.String,System.String,System.String,System.Int32,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            DataPort SMS API'ı ile sms göndermek için gerekli sınıf oluşturucu
+            </summary>
+            <param name="UserName">Kullanıcı adı</param>
+            <param name="Password">Şifre</param>
+            <param name="Scope">Hesap numarası</param>
+            <param name="Operator">Servis sağlayıcı operatör değeri. OperatorTypes sınıfından seçilebilir.</param>
+            <param name="Orginator">Gönderici SMS Başlığı</param>
+            <param name="ShortNumber">Servis sağlayıcı operatörün kısa numarası.</param>
+            <param name="Isunicode">Gönderilecek olan SMS'lerin karakter kodlaması.</param>
+            <param name="SendDate">Gönderimin başlayacağı tarih. İsteğe bağlıdır. Tarih formatı "yyyy-MM-dd HH:mm:ss" şeklinde olmalıdır.</param>
+            <param name="DeleteDate">Gönderiminin biteceği tarih. İsteğe bağlıdır. Tarih formatı "yyyy-MM-dd HH:mm:ss" şeklinde olmalıdır.</param>
+        </member>
+        <member name="M:DataPort.sms.Oturum">
+            <summary>
+            DataPort API'sine sınıf oluştururken verilen parametrelerle oturum isteği gönderir.
+            </summary>
+            <returns>DataPort API'si tarafından oluşturulan Bearer Token döndürür.</returns>
+        </member>
+        <member name="M:DataPort.sms.AliciEkle(System.String,System.String)">
+            <summary>
+            SMS gönderilecek numaraları ve metinleri pakete ekleyen fonksiyon.
+            Her pakette en az bir metin bulunması gerekir. Paket içerisinde tek metin varsa tüm numaralara aynı metin gönderilir.
+            </summary>
+            <param name="GSM">Telefon numarası</param>
+            <param name="metin">Gönderilecek olan metin</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataPort.sms.SMSGonder">
+            <summary>
+            Pakete eklenen mesajlar DataPort API'ına gönderilir.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataPort.yardimci">
+            <summary>
+            Yardımcı metodları barındıran sınıf
+            </summary>
+        </member>
+        <member name="M:DataPort.yardimci.TelefonFormat(System.String)">
+            <summary>
+            Gönderilen telefon numarasının kayıt için uygunluğu kontrol edilir.
+            </summary>
+            <param name="telefon">Kontrol yapılacak telefon numarası</param>
+            <returns>True/False</returns>
+        </member>
+    </members>
+</doc>
