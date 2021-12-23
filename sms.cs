@@ -12,13 +12,13 @@ namespace DataPort
     /// <summary>
     /// DataPort API'ı ile sms göndermeye yarayan sınıftır.
     /// </summary>
-    public class sms
+    public class sms : IDisposable
     {
         #region Tanımlamalar
-        private static string _UserName;
-        private static string _Password;
-        private static string _Scope;
-        private static SMSGonderiPaketi _SMSGonderiPaketi = new SMSGonderiPaketi();
+        private string _UserName;
+        private string _Password;
+        private string _Scope;
+        private SMSGonderiPaketi _SMSGonderiPaketi;
         private class SMSGonderiPaketi
         {
             public string SessionID = "";
@@ -94,6 +94,8 @@ namespace DataPort
             _UserName = UserName;
             _Password = Password;
             _Scope = Scope;
+
+            _SMSGonderiPaketi = new SMSGonderiPaketi();
 
             _SMSGonderiPaketi.Operator = Operator;
             _SMSGonderiPaketi.Orginator = Orginator;
@@ -188,6 +190,11 @@ namespace DataPort
             dynamic donus_json = JObject.Parse(donus);
 
             return donus_json;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

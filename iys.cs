@@ -12,14 +12,14 @@ namespace DataPort
     /// <summary>
     /// İleti Yönetim Sistemi'ne DataPort API'ı üzerinden veri kaydetmek için oluşturulmuş sınıftır.
     /// </summary>
-    public class iys
+    public class iys : IDisposable
     {
         #region Tanımlamalar
-        private static string _UserName;
-        private static string _Password;
-        private static KayitIstek _KayitIstek = new KayitIstek();
-        private static MessageList _MessageList = new MessageList();
-        private static List<KayitIstekSonuc> _KayitIstekSonuclari = new List<KayitIstekSonuc>();
+        private string _UserName;
+        private string _Password;
+        private KayitIstek _KayitIstek = new KayitIstek();
+        private MessageList _MessageList = new MessageList();
+        private List<KayitIstekSonuc> _KayitIstekSonuclari = new List<KayitIstekSonuc>();
         /// <summary>
         /// İzin kaynağı seçenekleri
         /// </summary>
@@ -304,6 +304,11 @@ namespace DataPort
             }
 
             return _KayitIstekSonuclari;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
